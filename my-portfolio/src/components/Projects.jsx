@@ -1,21 +1,75 @@
-export default function Projects() {
-  const myProjects = [
-    { title: "Maladh Platform", desc: "An interactive web platform built with React and modern UI components.", tech: "React - Tailwind" },
-    { title: "Nebras Coffee Shop", desc: "A clean and modern website design for a business showcase.", tech: "React - CSS" }
+import React, { useEffect, useRef, useState } from 'react';
+import './Projects.css';
+
+const Projects = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  // قائمة المشاريع خاوية - هادو غير خانات تجريبية وتقدر تزيدي/تعدلي عليهم من بعد
+  const emptyProjects = [
+    {
+      title: 'Project Name 1',
+      description: 'Project description will go here. A brief explanation of what this project does and the technologies used.',
+      techStack: ['HTML', 'CSS', 'JavaScript'],
+    },
+    {
+      title: 'Project Name 2',
+      description: 'Project description will go here. A brief explanation of what this project does and the technologies used.',
+      techStack: ['React.js', 'CSS'],
+    },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="projects" className="bg-ivory text-charcoal py-16 px-8">
-      <h2 className="text-3xl font-bold text-burgundy text-center mb-10">Projects</h2>
-      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-        {myProjects.map((item, index) => (
-          <div key={index} className="border border-gold/30 p-6 rounded-lg bg-white shadow-sm hover:shadow-md transition">
-            <h3 className="text-2xl font-bold text-burgundy mb-2">{item.title}</h3>
-            <p className="mb-4">{item.desc}</p>
-            <span className="text-sm bg-ivory text-burgundy px-3 py-1 rounded border border-gold">{item.tech}</span>
-          </div>
-        ))}
+    <section 
+      ref={sectionRef} 
+      className={`projects-container ${isVisible ? 'animate-in' : ''}`}
+      id="projects"
+    >
+      <div className="projects-content">
+        <h2 className="projects-title">Projects</h2>
+        
+        <div className="projects-grid">
+          {emptyProjects.map((project, index) => (
+            <div key={index} className="project-card">
+              <div className="project-image-placeholder">
+                <span>Project Image Placeholder</span>
+              </div>
+              <div className="project-info">
+                <h3 className="project-card-title">{project.title}</h3>
+                <p className="project-card-desc">{project.description}</p>
+                <div className="project-tech-tags">
+                  {project.techStack.map((tech, techIndex) => (
+                    <span key={techIndex} className="tech-tag">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default Projects;

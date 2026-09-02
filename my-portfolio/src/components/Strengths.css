@@ -1,0 +1,91 @@
+:root {
+  --deep-burgundy: #58111A;
+  --ivory: #FFFFF0;
+  --soft-black: #121212;
+}
+
+.strengths-container {
+  background-color: var(--deep-burgundy);
+  color: var(--ivory);
+  padding: 5rem 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.strengths-container.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.strengths-content {
+  max-width: 1000px;
+  width: 100%;
+}
+
+.strengths-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ivory);
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.strengths-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--ivory);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.strengths-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.strength-card {
+  background-color: rgba(18, 18, 18, 0.6);
+  border: 1px solid rgba(255, 255, 240, 0.15);
+  border-radius: 10px;
+  padding: 1.8rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.strength-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--ivory);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.strength-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ivory);
+  margin-bottom: 0.8rem;
+}
+
+.strength-card-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #E0E0E0;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .strengths-container {
+    padding: 3rem 6%;
+  }
+
+  .strengths-grid {
+    grid-template-columns: 1fr;
+  }
+}

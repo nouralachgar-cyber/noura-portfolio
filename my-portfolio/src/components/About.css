@@ -1,0 +1,90 @@
+:root {
+  --deep-burgundy: #58111A;
+  --ivory: #FFFFF0;
+  --soft-black: #121212;
+}
+
+/* الحاوية الرئيسية للسكشن */
+.about-container {
+  background-color: var(--deep-burgundy); /* تباين ناعم مع الخلفية الأولى */
+  color: var(--ivory);
+  padding: 5rem 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* الحالة البدائية قبل ما توصلي ليها فالسكرول (مخفية ومزاحة لتحت) */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* فاش كتوصلي ليها فالسكرول كيتفعل هاد الكلاس وكتبان */
+.about-container.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-content {
+  max-width: 900px;
+  width: 100%;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ivory);
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+/* خط تزييني خفيف تحت العنوان */
+.about-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--ivory);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* بطاقة النصوص */
+.about-text-card {
+  background-color: rgba(18, 18, 18, 0.6); /* اسود خفيف متناسق مع البرغندي */
+  border: 1px solid rgba(255, 255, 240, 0.1);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.about-paragraph {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--ivory);
+  margin-bottom: 1.2rem;
+}
+
+.about-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive للموبايل */
+@media (max-width: 768px) {
+  .about-container {
+    padding: 3rem 6%;
+  }
+
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .about-text-card {
+    padding: 1.5rem;
+  }
+
+  .about-paragraph {
+    font-size: 1rem;
+  }
+}
