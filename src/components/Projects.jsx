@@ -12,9 +12,9 @@ const projects = [
     status: "Concept",
   },
   {
-    title: "Noura Portfolio v2",
-    description: "This very portfolio — dev-girl aesthetic, Tailwind v4, shadcn + aceternity vibes. Senior-level polish.",
-    tech: ["React", "Tailwind v4", "Motion"],
+    title: "Nebras Coffee — Web App & Online Ordering",
+    description: "A full-stack web application and interactive digital menu for a specialty coffee. features dynamic product display for coffee, fresh juices, and desserts, with an integrated online ordering system.",
+    tech: ["JavaScript","CSS","HTML","React", "Tailwind"],
     gradient: "from-violet-500 via-purple-500 to-indigo-600",
     status: "Live",
   },
